@@ -45,9 +45,9 @@ public class Scene : MonoBehaviour
         // other rays
         float x_pos = 1.0f / (this.image.Width * 2.0f);
         float y_pos = 1.0f / (this.image.Height * 2.0f);
-        int x = 1;
-        int y = 1;
-        this.debug.Ray(new Ray(Vector3.zero, NormalizedImageToWorldCoord(x_pos * x, y_pos * y)), Color.white);
+        int x = 4;
+        int y = 4;
+        this.debug.Ray(new Ray(Vector3.zero, NormalizedImageToWorldCoord(x_pos * (x * 2 + 1), y_pos * (y * 2 + 1))), Color.white);
     }
 
     private void Render()
