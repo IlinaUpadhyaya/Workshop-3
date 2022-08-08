@@ -37,9 +37,17 @@ public class Scene : MonoBehaviour
         this.debug.Ray(new Ray(Vector3.zero, NormalizedImageToWorldCoord(0f, 0f)), Color.blue);
 
         // Add more rays to visualise here...
+        // other frustrum edges
         this.debug.Ray(new Ray(Vector3.zero, NormalizedImageToWorldCoord(1f, 0f)), Color.blue);
         this.debug.Ray(new Ray(Vector3.zero, NormalizedImageToWorldCoord(0f, 1f)), Color.blue);
         this.debug.Ray(new Ray(Vector3.zero, NormalizedImageToWorldCoord(1f, 1f)), Color.blue);
+
+        // other rays
+        float x_pos = 1.0f / (this.image.Width * 2.0f);
+        float y_pos = 1.0f / (this.image.Height * 2.0f);
+        int x = 1;
+        int y = 1;
+        this.debug.Ray(new Ray(Vector3.zero, NormalizedImageToWorldCoord(x_pos * x, y_pos * y)), Color.white);
     }
 
     private void Render()
