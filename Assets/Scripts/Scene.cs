@@ -43,16 +43,28 @@ public class Scene : MonoBehaviour
         this.debug.Ray(new Ray(Vector3.zero, NormalizedImageToWorldCoord(1f, 1f)), Color.blue);
 
         // other rays
-        float x_pos = 1.0f / (this.image.Width * 2.0f);
-        float y_pos = 1.0f / (this.image.Height * 2.0f);
-        int x = 4;
-        int y = 4;
-        this.debug.Ray(new Ray(Vector3.zero, NormalizedImageToWorldCoord(x_pos * (x * 2 + 1), y_pos * (y * 2 + 1))), Color.white);
+        for (int y = 0; y < this.image.Height; y++)
+        {
+            for (int x = 0; x < this.image.Width; x++)
+            {
+                float x_pos = 1.0f / (this.image.Width * 2.0f);
+                float y_pos = 1.0f / (this.image.Height * 2.0f);
+                this.debug.Ray(new Ray(Vector3.zero, NormalizedImageToWorldCoord(x_pos * (x * 2 + 1), y_pos * (y * 2 + 1))), Color.white);
+            }
+        }
     }
 
     private void Render()
     {
         // Render the image here...
+        for (int y = 0; y < this.image.Height; y++)
+        {
+            for (int x = 0; x < this.image.Width; x++)
+            {
+                this.image.SetPixel(x, y, Color.black);
+            }
+        }
+
     }
 
     private Vector3 NormalizedImageToWorldCoord(float x, float y)
